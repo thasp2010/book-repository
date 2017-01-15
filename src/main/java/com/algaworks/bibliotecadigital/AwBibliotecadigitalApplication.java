@@ -14,9 +14,6 @@ public class AwBibliotecadigitalApplication {
 		SpringApplication.run(AwBibliotecadigitalApplication.class, args);
 	}
 	
-	@RequestMapping("/")
-	public String hello(){
-		return "Hello guys!";
-	}
+	
 	
 }

@@ -12,20 +12,30 @@ import com.algaworks.bibliotecadigital.repository.Livros;
 
 
 @Controller
-@RequestMapping("/livros")
 public class LivrosController {
 	
 	@Autowired
 	private Livros livros;
 	
-	@GetMapping
+	@RequestMapping("/")
+	public String login(){
+		return "Login";
+	}
+	
+	@PostMapping("/")
+	public String autenticacao(){
+		return "redirect:/livros";
+	}
+	
+	@GetMapping("/livros")
 	public ModelAndView home(){
 		ModelAndView mv = new ModelAndView("CadastroLivros");
 		mv.addObject("livros",livros.findAll());		
 		return mv;
 	}
 	
-	@PostMapping
+	
+	@PostMapping("/livros")
 	public String salvar(Livro livro){
 		livros.save(livro);
 		return "redirect:/livros";
